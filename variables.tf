@@ -114,3 +114,8 @@ variable "target_memory_percent" {
   type        = number
   default     = 70
 }
+
+variable "alert_email" {
+  description = "E-mail que recebe as notificacoes do SNS quando um alarme dispara"
+  type        = string
+}

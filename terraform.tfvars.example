@@ -3,3 +3,7 @@
 
 # Senha do usuario administrador do RDS — escolha a sua, nao commite
 db_password = "SUA_SENHA_AQUI"
+
+# E-mail que recebe os alarmes do SNS — confirme a inscricao na caixa
+# de entrada apos o apply
+alert_email = "seu-email@exemplo.com"

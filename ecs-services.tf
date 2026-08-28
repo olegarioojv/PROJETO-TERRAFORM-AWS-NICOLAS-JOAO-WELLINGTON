@@ -17,8 +17,12 @@ resource "aws_ecs_service" "frontend" {
     container_port   = 80
   }
 
+  # task_definition tambem ignorado: a pipeline de CI/CD publica novas
+  # revisoes por fora do Terraform (aws-actions/amazon-ecs-deploy-task-definition),
+  # sem isso o apply reverteria o Service pra ultima revisao conhecida
+  # pelo state, desfazendo o deploy mais recente.
   lifecycle {
-    ignore_changes = [desired_count]
+    ignore_changes = [desired_count, task_definition]
   }
 
   depends_on = [aws_lb_listener.main]
@@ -44,7 +48,7 @@ resource "aws_ecs_service" "api" {
   }
 
   lifecycle {
-    ignore_changes = [desired_count]
+    ignore_changes = [desired_count, task_definition]
   }
 
   depends_on = [aws_lb_listener.main]

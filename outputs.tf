@@ -72,3 +72,8 @@ output "ecr_repository_api" {
   description = "URL do repositorio ECR da api — usado no docker push e no deploy.yml"
   value       = aws_ecr_repository.api.repository_url
 }
+
+output "sns_topic_arn" {
+  description = "ARN do topico SNS que recebe os alarmes"
+  value       = aws_sns_topic.alerts.arn
+}
